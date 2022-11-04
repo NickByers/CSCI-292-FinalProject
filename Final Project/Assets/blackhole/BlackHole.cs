@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    [SerializeField] int _Health = 1000;
+    [SerializeField] public static float  _Health = 1000f;
+    [SerializeField] public static float _MaxHealth = _Health;
+    public Healthbar healthBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,15 @@ public class BlackHole : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
-        _Health = _Health - 1;
+        Destroy(other.gameObject); // destroy bullet
+        //Debug.Log("bullet hit");
+        TakeDamage();
+    }
+
+    public void TakeDamage()
+    {
+        _Health = _Health - 1f;
+        //Debug.Log(_Health);
+        healthBar.UpdateHealthBar();
     }
 }

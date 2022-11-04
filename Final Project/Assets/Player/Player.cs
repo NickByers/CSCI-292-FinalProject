@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public GameObject ship;
     void Start()
     {
-        InvokeRepeating("Shoot", 0, 0.3f);  //1s delay, repeat every 1s
+        InvokeRepeating("Shoot", 0.5f, 0.1f);  //1s delay, repeat every 1s
     }
 
     // Update is called once per frame
