@@ -36,6 +36,14 @@ public class GameOverText : MonoBehaviour
 
     public static void PlayerWon()
     {
-        Text.text = "You Win!";
+        Text.text = "You Win!" + "\n\n Press ENTER to Play Again";
+
+        GameObject health = GameObject.Find("HealthbarInner");
+        image = health.GetComponent<Image>();
+        image.enabled = false;
+
+        health = GameObject.Find("Healthbar");
+        image = health.GetComponent<Image>();
+        image.enabled = false;
     }
 }

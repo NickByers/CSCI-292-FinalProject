@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    [SerializeField] public static float  _Health = 1000f;
+    [SerializeField] public static float  _Health = 100f;
     [SerializeField] public static float _MaxHealth = _Health;
     public Healthbar healthBar;
     // Start is called before the first frame update
     void Start()
     {
-
+        healthBar.UpdateHealthBar();
     }
 
     // Update is called once per frame
@@ -28,6 +28,10 @@ public class BlackHole : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (Player.doubleDamage)
+        {
+            _Health = _Health - 2f;
+        }
         _Health = _Health - 1f;
         //Debug.Log(_Health);
         healthBar.UpdateHealthBar();

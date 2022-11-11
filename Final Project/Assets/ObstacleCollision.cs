@@ -27,9 +27,17 @@ public class ObstacleCollision : MonoBehaviour
     {
         if (collision.gameObject.name == "PlayerShip" && isActive)
         {
-            Destroy(collision.gameObject);
-            Debug.Log("Player Hit!");
-            GameState.GameIsOver = true;
+            if (Player.shieldBool)
+            {
+                Destroy(gameObject);
+                Player.shieldBool = false;
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                Debug.Log("Player Hit!");
+                GameState.GameIsOver = true;
+            }
         }
     }
 
