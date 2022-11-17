@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlackHole : MonoBehaviour
 {
-    [SerializeField] public static float  _Health = 100f;
+    [SerializeField] public static float  _Health = 2000f;
     [SerializeField] public static float _MaxHealth = _Health;
     public Healthbar healthBar;
     // Start is called before the first frame update

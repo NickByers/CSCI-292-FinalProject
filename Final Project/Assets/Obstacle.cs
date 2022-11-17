@@ -16,7 +16,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, rotationDirection * rotationSpeed * Time.deltaTime); //rotates 50 degrees per second around z axis
+        transform.Rotate(0, 0, rotationDirection * rotationSpeed * Time.deltaTime); 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

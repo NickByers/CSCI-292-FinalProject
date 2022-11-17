@@ -25,31 +25,34 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shieldBool)
+        if (!GameState.GameIsOver)
         {
-            Shield();
-        }
-        if (!shieldBool)
-        {
-            sprite = ship.GetComponent<SpriteRenderer>();
-            sprite.color = new Color(1, 1, 1);
-        }
-        if (doubleDamage)
-        {
-            
-        }
-        if (Time.timeScale < 1.0f)
-        {
-            Time.timeScale = Time.timeScale * 1.01f;
-        }
+            if (shieldBool)
+            {
+                Shield();
+            }
+            if (!shieldBool)
+            {
+                sprite = ship.GetComponent<SpriteRenderer>();
+                sprite.color = new Color(1, 1, 1);
+            }
+            if (doubleDamage)
+            {
+                Invoke("ToggleDamageUpgrade", 3.0f);
+            }
+            if (Time.timeScale < 1.0f)
+            {
+                Time.timeScale = Time.timeScale * 1.01f;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            rotationDirection = rotationDirection * -1;
-            Time.timeScale = 0.1f;
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                rotationDirection = rotationDirection * -1;
+                Time.timeScale = 0.1f;
+            }
+
+            transform.Rotate(0, 0, rotationDirection * rotationSpeed * Time.deltaTime); 
         }
-        
-        transform.Rotate(0, 0, rotationDirection * rotationSpeed * Time.deltaTime); //rotates 50 degrees per second around z axis
     }
 
     void Shoot()
@@ -63,9 +66,14 @@ public class Player : MonoBehaviour
 
     void Shield()
     {
-        Player.doubleDamage = true;
+        
         sprite = ship.GetComponent<SpriteRenderer>();
         sprite.color = new Color(0, 1, 1);
+    }
+
+    void ToggleDamageUpgrade()
+    {
+        Player.doubleDamage = false;
     }
     
 }
